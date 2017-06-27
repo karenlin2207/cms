@@ -8,15 +8,16 @@
 			<h1>{{$content->title}}</h1>
 		</div>
 		</div>
-		<div class="container">
-		
+		@if($content->content_first != NULL)
+		<div class="container margin-top">
 		{!!$content->content_first!!}
 		</div>
+		@endif
 	@endif
 @endsection
 
 @section('content_second')
-<div class="container">
-{!! $content->content !!}
+<div class="container padding-bottom">
+	{!! $content->content !!}
 </div>
 @endsection

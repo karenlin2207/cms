@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/send_mail', 'MailController@send')->name('send_mail');
+
 Route::group(['prefix' => 'contents'], function(){
 	Route::get('/', 'Admin\ContentController@index');
 	Route::delete('/{content}', 'Admin\ContentController@delete');

@@ -13,14 +13,17 @@ class ContentController extends Controller
     {
         return response()->json(Content::all());
     }
+
     public function create()
     {
     	return view('admin.create');
     }
+
     public function detail(Content $content)
     {
         return view('content.detail', compact('content'));
     }
+
     public function store(Request $request)
     {
         if (Input::hasFile('banner_file')) {
@@ -39,16 +42,19 @@ class ContentController extends Controller
         $content = Content::create($request->all());
         return redirect('/addmin');
     }
+
     public function edit($file_name)
     {
         $content = Content::where('uri_name', $file_name)->first();
         return view('admin.edit', compact('content'));
     }
+
     public function show($file_name)
     {
         $content = Content::where('uri_name', $file_name)->first();
     	return view('show', compact('content'));
     }
+
     public function update(Request $request, Content $content)
     {
         if (Input::hasFile('banner_file')) {
@@ -64,10 +70,12 @@ class ContentController extends Controller
         $content->update($request->all());
         return redirect('/addmin');
     }
+
     public function changeStatus(Request $request, Content $content){
         $request = $request->all();
         $content->update($request);
     }
+    
     public function delete(Content $content)
     {
         $content->delete();
